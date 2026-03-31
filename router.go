@@ -7,11 +7,16 @@ import (
 	"github.com/go-amwk/core"
 )
 
+// Router is the routing engine that manages the routing tree and handles incoming requests by
+// matching them to the registered routes and executing the corresponding handlers.
 type Router struct {
+	// NotFoundHandler is an optional custom handler that will be executed when no matching route is
+	// found.
 	NotFoundHandler core.HandlerFunc
-
+	// tree is the routing tree that maps HTTP methods to their corresponding root nodes.
 	tree map[string]*node
-
+	// mu is a mutex to protect concurrent access to the routing tree during route registration and
+	// request handling.
 	mu sync.RWMutex
 }
 
@@ -93,10 +98,13 @@ func (r *Router) handle(method, path string, handlers ...core.HandlerFunc) {
 
 	root, ok := r.tree[method]
 	if !ok {
-		root = &node{}
+		root = newNode("")
 		r.tree[method] = root
 	}
-	root.addRoute(path, handlers...)
+
+	if err := root.addRoute(path, handlers...); err != nil {
+		panic(err)
+	}
 }
 
 // Route returns a handler middleware that matches the incoming request's method and path to the
