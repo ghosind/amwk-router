@@ -1,2 +1,4 @@
 github.com/go-amwk/core v0.0.1 h1:I8UOBzfOaN+6P6SYWwXqznslpELPXgKEruaPDpUyHNo=
 github.com/go-amwk/core v0.0.1/go.mod h1:zOhJQ/5aTH87NY2vphPdJXHY8enN8gDKSWIicvY4Kns=
+github.com/go-amwk/engine v0.0.1 h1:LDjIpG0L/bq3kjVjaOtbt6+H/snMh4Xo4BziygyF/xM=
+github.com/go-amwk/engine v0.0.1/go.mod h1:5vKVTCH5lVg37s4acNzZUsNKwI7xgQx8LGwbidA9nek=
