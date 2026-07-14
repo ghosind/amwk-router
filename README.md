@@ -12,7 +12,7 @@ go get github.com/go-amwk/router
 
 ## Getting Started
 
-There are a simple example demonstrating how to use the `router` package to create a basic web server with route handling.
+There is a simple example demonstrating how to use the `router` package to create a basic web server with route handling.
 
 ```go
 package main

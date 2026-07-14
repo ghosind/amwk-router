@@ -89,6 +89,11 @@ func (r *Router) Any(path string, handlers ...core.HandlerFunc) *Router {
 
 // handle is a helper method to register a new route with the given method, path, and handlers.
 func (r *Router) handle(method, path string, handlers ...core.HandlerFunc) {
+	if len(handlers) == 0 {
+		// at least one handler must be provided for a route, otherwise panic with an error
+		panic(ErrNoHandlerProvided)
+	}
+
 	if path == "" || path[0] != '/' {
 		path = "/" + path
 	}
