@@ -146,6 +146,7 @@ func (r *Router) notFoundHandler() core.HandlerFunc {
 func DefaultNotFoundHandler() core.HandlerFunc {
 	return func(ctx core.Context) error {
 		ctx.Status(http.StatusNotFound)
+		ctx.Write([]byte("404 Not Found"))
 		ctx.Abort()
 		return nil
 	}
